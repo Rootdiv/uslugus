@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="img/favicon.png" type="image/png" />
+    <title>Услугус - сервис услуг</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <img class="header__logo" src="img/logo.svg" alt="Логотип Услугус" />
+        <form class="header__search search">
+          <input type="text" class="search__input" />
+          <button type="submit" class="search__submit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M10.875 18.75a7.875 7.875 0 1 0 0-15.75 7.875 7.875 0 0 0 0 15.75ZM16.443 16.444 21 21" />
+            </svg>
+          </button>
+        </form>
+        <div class="header__auth">
+          <button type="button" class="header__auth-btn header__auth-btn_sign-in">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8.813 15.938 12.75 12 8.813 8.062M2.25 12h10.497M12.75 3.75H18a.75.75 0 0 1 .75.75v15a.75.75 0 0 1-.75.75h-5.25" />
+            </svg>
+            <span>Войти</span>
+          </button>
+          <button type="button" class="header__auth-btn header__auth-btn_sign-up">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
+              <path stroke="currentColor" stroke-miterlimit="10" stroke-width="2"
+                d="M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" />
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M2.905 20.25a10.504 10.504 0 0 1 18.19 0" />
+            </svg>
+            <span>Регистрация</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <section class="category">
+          <button class="category__title">
+            <span>Категории</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.25 7.5L10 13.75L3.75 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+          <ul class="category__list">
+            <li class="category__item">
+              <button type="button" class="category__btn category__btn_photografer">
+                Фотограф
+              </button>
+            </li>
+            <li class="category__item">
+              <button type="button" class="category__btn category__btn_makeup">
+                Визажист
+              </button>
+            </li>
+            <li class="category__item">
+              <button type="button" class="category__btn category__btn_masseur">
+                Массажист
+              </button>
+            </li>
+            <li class="category__item">
+              <button type="button" class="category__btn category__btn_handyman">
+                Муж на час
+              </button>
+            </li>
+            <li class="category__item">
+              <button type="button" class="category__btn category__btn_cosmetologist">
+                Косметолог
+              </button>
+            </li>
+            <li class="category__item">
+              <button type="button" class="category__btn category__btn_electrician">
+                Электрик
+              </button>
+            </li>
+            <li class="category__item">
+              <button type="button" class="category__btn category__btn_manicurist">
+                Мастер маникюра
+              </button>
+            </li>
+            <li class="category__item">
+              <button type="button" class="category__btn category__btn_plumber">
+                Сантехник
+              </button>
+            </li>
+          </ul>
+        </section>
+        <section class="services">
+          <h2>Список специалистов</h2>
+          <ul class="services__list">
+            <li class="services__item">
+              <article class="service">>
+                <img src="img/photo.png" alt="аватар Иван" class="service__avatar" />
+                <div class="service__present">
+                  <h3 class="service__title">Фотограф</h3>
+                  <p class="service__name">Иван П.</p>
+                </div>
+                <p class="service__price">от 4000 ₽</p>
+                <div class="service__review">
+                  <div class="service_stars">
+                    <img src="img/star.png" alt="Рейтинг специалиста 4 из 5" class="service__star">
+                    <img src="img/star.png" alt="" class="service__star">
+                    <img src="img/star.png" alt="" class="service__star">
+                    <img src="img/star.png" alt="" class="service__star">
+                    <img src="img/star-empty.png" alt="" class="service__star">
+                  </div>
+                  <p class="service__count-review">4</p>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+    <footer class="footer">
+      <img class="footer__logo" src="img/logo.svg" alt="Логотип Услугус" />
+      <p class="footer__copyright">&copy; Услугус, 2022</p>
+      <div class="footer__contacts">
+        <p>Design by Anastasia Ilina</p>
+        <p>Tg: <a href="https://t.me/Mrshmallowww" target="_blank">@Mrshmallowww</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
