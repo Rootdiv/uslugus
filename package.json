@@ -16,7 +16,6 @@
     "@babel/core": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
     "babel-loader": "^9.1.0",
-    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
     "dotenv": "^16.0.3",
     "group-css-media-queries-loader": "^4.3.0",

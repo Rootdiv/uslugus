@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 //Подключаем библиотеку для с работы файлами .env и указываем путь к файлу.
 require('dotenv').config({ path: path.resolve(__dirname, '', '.env.local') });
-// const CopyPlugin = require('copy-webpack-plugin');
 
 const mode = process.env.NODE_ENV || 'development';
 const devMode = mode === 'development';
@@ -39,9 +38,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
     }),
-    // new CopyPlugin({
-    //   patterns: [{ from: 'static', to: './' }],
-    // }),
   ],
   module: {
     rules: [
