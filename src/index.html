@@ -10,7 +10,8 @@
   </head>
   <body>
     <header class="header">
-      <div class="container">
+      <h1 class="visually-hidden">Услугус - сервис услуг</h1>
+      <div class="container header__container">
         <img class="header__logo" src="img/logo.svg" alt="Логотип Услугус" />
         <form class="header__search search">
           <input type="text" class="search__input" />
@@ -42,47 +43,47 @@
       </div>
     </header>
     <main>
-      <div class="container">
-        <section class="category">
-          <button class="category__title">
-            <span>Категории</span>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M16.25 7.5L10 13.75L3.75 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg>
-          </button>
-          <ul class="category__list">
-            <li class="category__item">
-              <button type="button" class="category__btn category__btn_photographer"> Фотограф </button>
-            </li>
-            <li class="category__item">
-              <button type="button" class="category__btn category__btn_makeup"> Визажист </button>
-            </li>
-            <li class="category__item">
-              <button type="button" class="category__btn category__btn_masseur"> Массажист </button>
-            </li>
-            <li class="category__item">
-              <button type="button" class="category__btn category__btn_handyman"> Муж на час </button>
-            </li>
-            <li class="category__item">
-              <button type="button" class="category__btn category__btn_cosmetologist"> Косметолог </button>
-            </li>
-            <li class="category__item">
-              <button type="button" class="category__btn category__btn_electrician"> Электрик </button>
-            </li>
-            <li class="category__item">
-              <button type="button" class="category__btn category__btn_manicurist"> Мастер маникюра </button>
-            </li>
-            <li class="category__item">
-              <button type="button" class="category__btn category__btn_plumber"> Сантехник </button>
-            </li>
-          </ul>
-        </section>
-        <section class="services">
-          <h2>Список специалистов</h2>
+      <section class="services">
+        <h2 class="visually-hidden">Список специалистов</h2>
+        <div class="container services__container">
+          <div class="services__category category">
+            <button class="category__title">
+              <span>Категории</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.25 7.5L10 13.75L3.75 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+            <ul class="category__list">
+              <li class="category__item">
+                <button type="button" class="category__btn category__btn_photographer">Фотограф</button>
+              </li>
+              <li class="category__item">
+                <button type="button" class="category__btn category__btn_makeup">Визажист</button>
+              </li>
+              <li class="category__item">
+                <button type="button" class="category__btn category__btn_masseur">Массажист</button>
+              </li>
+              <li class="category__item">
+                <button type="button" class="category__btn category__btn_handyman">Муж на час</button>
+              </li>
+              <li class="category__item">
+                <button type="button" class="category__btn category__btn_cosmetologist">Косметолог</button>
+              </li>
+              <li class="category__item">
+                <button type="button" class="category__btn category__btn_electrician">Электрик</button>
+              </li>
+              <li class="category__item">
+                <button type="button" class="category__btn category__btn_manicurist">Мастер маникюра</button>
+              </li>
+              <li class="category__item">
+                <button type="button" class="category__btn category__btn_plumber">Сантехник</button>
+              </li>
+            </ul>
+          </div>
           <ul class="services__list">
             <li class="services__item">
-              <article class="service">>
+              <article class="service">
                 <img src="img/photo.png" alt="аватар Иван" class="service__avatar" />
                 <div class="service__present">
                   <h3 class="service__title">Фотограф</h3>
@@ -90,7 +91,67 @@
                 </div>
                 <p class="service__price">от 4000 ₽</p>
                 <div class="service__review">
-                  <div class="service_stars">
+                  <div class="service__stars">
+                    <img src="img/star.svg" alt="Рейтинг специалиста 4 из 5" class="service__star" />
+                    <img src="img/star.svg" alt="" class="service__star" />
+                    <img src="img/star.svg" alt="" class="service__star" />
+                    <img src="img/star.svg" alt="" class="service__star" />
+                    <img src="img/star-empty.svg" alt="" class="service__star" />
+                  </div>
+                  <p class="service__count-review">4</p>
+                </div>
+              </article>
+            </li>
+            <li class="services__item">
+              <article class="service">
+                <img src="img/photo.png" alt="аватар Иван" class="service__avatar" />
+                <div class="service__present">
+                  <h3 class="service__title">Фотограф</h3>
+                  <p class="service__name">Иван П.</p>
+                </div>
+                <p class="service__price">от 4000 ₽</p>
+                <div class="service__review">
+                  <div class="service__stars">
+                    <img src="img/star.svg" alt="Рейтинг специалиста 4 из 5" class="service__star" />
+                    <img src="img/star.svg" alt="" class="service__star" />
+                    <img src="img/star.svg" alt="" class="service__star" />
+                    <img src="img/star.svg" alt="" class="service__star" />
+                    <img src="img/star-empty.svg" alt="" class="service__star" />
+                  </div>
+                  <p class="service__count-review">4</p>
+                </div>
+              </article>
+            </li>
+            <li class="services__item">
+              <article class="service">
+                <img src="img/photo.png" alt="аватар Иван" class="service__avatar" />
+                <div class="service__present">
+                  <h3 class="service__title">Фотограф</h3>
+                  <p class="service__name">Иван П.</p>
+                </div>
+                <p class="service__price">от 4000 ₽</p>
+                <div class="service__review">
+                  <div class="service__stars">
+                    <img src="img/star.svg" alt="Рейтинг специалиста 4 из 5" class="service__star" />
+                    <img src="img/star.svg" alt="" class="service__star" />
+                    <img src="img/star.svg" alt="" class="service__star" />
+                    <img src="img/star.svg" alt="" class="service__star" />
+                    <img src="img/star-empty.svg" alt="" class="service__star" />
+                  </div>
+                  <p class="service__count-review">4</p>
+                </div>
+              </article>
+            </li>
+            <li class="services__item">
+              <article class="service">
+                <img src="img/photo.png" alt="аватар Иван" class="service__avatar" />
+                <div class="service__present">
+                  <h3 class="service__title">Фотограф</h3>
+                  <p class="service__name">Иван П.</p>
+                </div>
+                <p class="service__price">от 4000 ₽</p>
+                <div class="service__review">
+                  <div class="service__stars">
                     <img src="img/star.svg" alt="Рейтинг специалиста 4 из 5" class="service__star" />
                     <img src="img/star.svg" alt="" class="service__star" />
                     <img src="img/star.svg" alt="" class="service__star" />
@@ -102,21 +163,23 @@
               </article>
             </li>
           </ul>
-        </section>
-      </div>
+        </div>
+      </section>
     </main>
     <footer class="footer">
-      <img class="footer__logo" src="img/logo.svg" alt="Логотип Услугус" />
-      <p class="footer__copyright">&copy; Услугус, 2022</p>
-      <div class="footer__contacts">
-        <p>Design by Anastasia Ilina</p>
-        <p>Tg: <a href="https://t.me/Mrshmallowww" target="_blank">@Mrshmallowww</a></p>
+      <div class="container footer__container">
+        <img class="footer__logo" src="img/logo.svg" alt="Логотип Услугус" />
+        <p class="footer__copyright">&copy; Услугус, 2022</p>
+        <div class="footer__contacts">
+          <p>Design by Anastasia Ilina</p>
+          <p>Tg: <a href="https://t.me/Mrshmallowww" target="_blank">@Mrshmallowww</a></p>
+        </div>
       </div>
     </footer>
     <div class="modal modal_service">
-      <div class="modal_body">
+      <div class="modal__body">
         <button type="button" class="modal__close"></button>
-        <div class="service">>
+        <div class="service">
           <img src="img/photo.png" alt="аватар Иван" class="service__avatar" />
           <div class="service__present">
             <h3 class="service__title">Фотограф</h3>
@@ -128,7 +191,7 @@
             <a href="mailto:IvanPhoto@gmail.com" class="service__link">IvanPhoto@gmail.com</a>
           </div>
           <div class="service__review">
-            <div class="service_stars stars">
+            <div class="service__stars stars">
               <img src="img/star.svg" alt="Рейтинг специалиста 4 из 5" class="stars__item" />
               <img src="img/star.svg" alt="" class="stars__item" />
               <img src="img/star.svg" alt="" class="stars__item" />
@@ -198,7 +261,7 @@
       </div>
     </div>
     <div class="modal modal_sign-up">
-      <div class="modal_body">
+      <div class="modal__body">
         <button type="button" class="modal__close"></button>
         <h3 class="modal__title">Регистрация специалиста</h3>
         <form class="form form_sign-up">
@@ -224,33 +287,15 @@
             <label class="form__label">
               <span class="form__text">Категория</span>
               <select class="form__select">
-                <option class="form__option" value="">
-                  Выберите категорию
-                </option>
-                <option class="form__option" value="photographer">
-                  Фотограф
-                </option>
-                <option class="form__option" value="makeup">
-                  Визажист
-                </option>
-                <option class="form__option" value="masseur">
-                  Массажист
-                </option>
-                <option class="form__option" value="handyman">
-                  Муж на час
-                </option>
-                <option class="form__option" value="cosmetologist">
-                  Косметолог
-                </option>
-                <option class="form__option" value="electrician">
-                  Электрик
-                </option>
-                <option class="form__option" value="manicurist">
-                  Мастер маникюра
-                </option>
-                <option class="form__option" value="plumber">
-                  Сантехник
-                </option>
+                <option class="form__option" value=""> Выберите категорию </option>
+                <option class="form__option" value="photographer"> Фотограф </option>
+                <option class="form__option" value="makeup"> Визажист </option>
+                <option class="form__option" value="masseur"> Массажист </option>
+                <option class="form__option" value="handyman"> Муж на час </option>
+                <option class="form__option" value="cosmetologist"> Косметолог </option>
+                <option class="form__option" value="electrician"> Электрик </option>
+                <option class="form__option" value="manicurist"> Мастер маникюра </option>
+                <option class="form__option" value="plumber"> Сантехник </option>
               </select>
             </label>
             <p class="form__label">
@@ -297,7 +342,7 @@
       </div>
     </div>
     <div class="modal modal_sign-in">
-      <div class="modal_body">
+      <div class="modal__body">
         <button type="button" class="modal__close"></button>
         <h3 class="modal__title">Вход в систему</h3>
         <form class="form form_sign-in">

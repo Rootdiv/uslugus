@@ -1,0 +1,22 @@
+.footer
+  padding: 40px 0
+
+  &__container
+    display: grid
+    grid-template-areas: 'logo . .' 'copyright . contacts'
+    gap: 14px
+
+  &__logo
+    grid-area: logo
+
+  &__copyright
+    grid-area: copyright
+    display: flex
+    align-items: flex-end
+
+  &__contacts
+    grid-area: contacts
+    display: flex
+    align-items: flex-end
+    flex-direction: column
+    gap: 7px
