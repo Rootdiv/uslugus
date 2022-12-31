@@ -3,7 +3,7 @@
 
   &__container
     display: grid
-    grid-template-areas: 'logo . .' 'copyright . contacts'
+    grid-template-areas: 'logo .' 'copyright contacts'
     gap: 14px
 
   &__logo
@@ -11,12 +11,11 @@
 
   &__copyright
     grid-area: copyright
-    display: flex
-    align-items: flex-end
+    align-self: end
 
   &__contacts
     grid-area: contacts
+    justify-self: end
     display: flex
-    align-items: flex-end
     flex-direction: column
     gap: 7px
