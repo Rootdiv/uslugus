@@ -1,0 +1,92 @@
+.form
+  &__fieldset
+    display: flex
+    flex-wrap: wrap
+    gap: 16px 12px
+
+    &_review-add
+      margin-bottom: 32px
+
+    &_user, &_service
+      margin-bottom: 46px
+
+    &_passwords
+      margin-bottom: 36px
+
+  &__input, &__select
+    width: 100%
+    height: 46px
+    padding: 10px 14px
+    background-color: #ffffff
+    border: none
+    border-radius: 8px
+    color: $text
+
+  &__wrapper-price
+    display: flex
+    gap: 5px
+
+  &__select_price
+    width: 105px
+
+  &__textarea
+    width: 100%
+    min-height: 80px
+    padding: 10px 14px
+    border: none
+    border-radius: 8px
+    color: $text
+
+  &__password
+    position: relative
+    &-eye
+      position: absolute
+      top: 50%
+      right: 14px
+      transform: translateY(-50%)
+      display: block
+      width: 24px
+      height: 24px
+      background-image: url('../img/eye-hide.svg')
+      cursor: pointer
+      &_show
+        background-image: url('../img/eye-show.svg')
+
+  &__wrapper-btn
+    min-height: 114px
+    display: flex
+    justify-content: space-between
+
+  &__label
+    flex: 1 1 310px
+
+  &__text
+    display: block
+    margin-bottom: 4px
+
+  &__bottom
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    gap: 24px
+
+  &__submit
+    display: block
+    padding: 10px 20px
+    background-color: #ffd600
+    border-radius: 4px
+    font-weight: 400
+
+    &_sign-up
+      align-self: flex-end
+
+    &_sign-in
+      margin-left: auto
+
+    &:hover
+      background-color: #e5c207
+    &:active, &:focus
+      background-color: #ffd600
+    &:disabled
+      background-color: #e2e2e2
+      color: $text
