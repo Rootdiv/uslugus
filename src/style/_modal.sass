@@ -7,7 +7,10 @@
   cursor: pointer
   background-color: rgba(#000000, 0.6)
 
-  &_person
+  @include mini
+    padding: 0
+
+  &_sign-up
     display: flex
 
   &__title
@@ -15,6 +18,9 @@
     font-size: 24px
     text-align: center
     margin-bottom: 24px
+
+    @include mobile
+      font-size: 18px
 
   &__body
     position: relative
@@ -25,6 +31,9 @@
     background-color: $back
     border-radius: 12px
     padding: 24px 20px 48px
+
+    @include mobile
+      padding: 24px 20px
 
   &__close
     position: absolute
@@ -39,9 +48,14 @@
     background-color: #ffffff
     border-radius: 50%
     color: #7b7b7b
+    z-index: 10
 
     &:hover
       color: #000000
+
+    @include mini
+      transform: none
+      box-shadow: 0 0 10px 10px #cccccc
 
   &__container
     max-width: 632px

@@ -49,7 +49,8 @@
           <div class="services__category category">
             <button class="category__title">
               <span>Категории</span>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="category_arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
                 <path d="M16.25 7.5L10 13.75L3.75 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" />
               </svg>
@@ -275,8 +276,8 @@
                 <textarea class="form__textarea"></textarea>
               </label>
             </fieldset>
-            <div class="form__bottom">
-              <div class="rating">
+            <div class="form__wrapper-send-review">
+              <div class="form__rating rating">
                 <svg class="rating__star" width="18" height="18" viewBox="0 0 18 18">
                   <use href="img/sprite.svg#star" />
                 </svg>
@@ -351,7 +352,7 @@
                   <option value="exactly">равно</option>
                   <option value="up to">до</option>
                 </select>
-                <input id="price" type="number" class="form__input" />
+                <input id="price" type="number" class="form__input" placeholder="Стоимость услуги" />
               </div>
             </div>
             <label class="form__label">

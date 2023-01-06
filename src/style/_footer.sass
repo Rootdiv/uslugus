@@ -1,13 +1,27 @@
 .footer
-  padding: 40px 0
+  padding: 55px 0
+
+  @include tablet
+    padding-bottom: 30px
+
+  @include tablet
+    padding-bottom: 14px
 
   &__container
+    font-weight: 400
     display: grid
     grid-template-areas: 'logo .' 'copyright contacts'
     gap: 14px
 
+    @include mobile
+      grid-template-areas: 'logo' 'contacts' 'copyright'
+      gap: 0
+
   &__logo
     grid-area: logo
+
+    @include mobile
+      margin-bottom: 44px
 
   &__copyright
     grid-area: copyright
@@ -19,3 +33,8 @@
     display: flex
     flex-direction: column
     gap: 7px
+
+    @include mobile
+      justify-self: start
+      gap: 10px
+      margin-bottom: 33px

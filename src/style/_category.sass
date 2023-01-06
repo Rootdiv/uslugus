@@ -3,7 +3,17 @@
     display: flex
     align-items: center
     gap: 10px
-    margin-bottom: 24px
+    width: 180px
+
+  &__arrow
+    @include tablet
+      transform: rotate(180deg)
+
+  &__list
+    padding-top: 24px
+
+    @include tablet
+      display: none
 
   &__item
     &:not(:last-child)
