@@ -28,7 +28,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    filename: '[name].[contenthash].js',
+    filename: 'js/[name].[contenthash].js',
     assetModuleFilename: 'assets/[name][ext]',
   },
   plugins: [
@@ -36,7 +36,7 @@ module.exports = {
       template: path.resolve(__dirname, 'src', 'index.html'),
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
+      filename: 'css/[name].[contenthash].css',
     }),
   ],
   module: {
@@ -79,6 +79,7 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|webp|gif|svg)$/i,
+        exclude: /sprite.svg/i,
         use: devMode
           ? []
           : [

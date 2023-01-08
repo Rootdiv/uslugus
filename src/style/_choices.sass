@@ -1,0 +1,36 @@
+@import '~choices.js/public/assets/styles/choices.min.css'
+
+.choices
+  position: relative
+  z-index: 333
+
+  &__inner
+    font-size: 16px
+    height: 46px
+    display: flex
+    align-items: center
+    background-color: #ffffff
+    border: none
+    border-radius: 8px
+    padding: 10px
+
+  &__list--dropdown
+    border: none !important
+
+  &__list--dropdown .choices__item--selectable
+    padding-right: 10px !important
+
+  &[data-type*=select-one]::after
+    width: 20px
+    height: 20px
+    background-image: url('../img/down.svg')
+    top: 50%
+    margin-top: -10px
+    border: none
+    transition: transform 0.2s ease-in-out
+
+  &[data-type*=select-one].is-open::after
+    transform: rotate(180deg)
+
+  &__list--dropdown .choices__placeholder
+    display: none
