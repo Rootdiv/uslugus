@@ -6,6 +6,7 @@ export const choicesController = () => {
     shouldSort: false,
     shouldSortItems: false,
     itemSelectText: '',
+    allowHTML: false,
   };
 
   new Choices('.form__select_category', {

@@ -14,11 +14,14 @@
     border-radius: 8px
     padding: 10px
 
-  &__list--dropdown
-    border: none !important
+  &__list
+    max-height: unset !important
 
-  &__list--dropdown .choices__item--selectable
-    padding-right: 10px !important
+    &--dropdown
+      border: none !important
+
+    &--dropdown .choices__item--selectable
+      padding-right: 10px !important
 
   &[data-type*=select-one]::after
     width: 20px
@@ -31,6 +34,3 @@
 
   &[data-type*=select-one].is-open::after
     transform: rotate(180deg)
-
-  &__list--dropdown .choices__placeholder
-    display: none
