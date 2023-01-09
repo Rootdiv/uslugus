@@ -29,7 +29,7 @@ const init = () => {
       const comments = document.querySelectorAll('.review__text');
       comments.forEach(comment => {
         //Проверяем срытую высоту комментария
-        if (comment.scrollHeight > 38) {
+        if (comment.scrollHeight > 38 && !comment.nextElementSibling?.contains('review__open')) {
           const button = document.createElement('button');
           button.classList.add('review__open');
           button.textContent = 'Развернуть';
