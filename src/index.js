@@ -1,7 +1,12 @@
 import './index.html';
 import './index.sass';
+
+import { avatarController } from './modules/avatarController';
 import { choicesController } from './modules/choicesController';
+import { getCategory } from './modules/getCategory';
 import { modalController } from './modules/modalController';
+import { renderList } from './modules/renderList';
+import { searchControl } from './modules/searchControl';
 import { selectController } from './modules/selectController';
 import { showPassword } from './modules/showPassword';
 
@@ -55,12 +60,21 @@ const init = () => {
     openBlock: '.category__list',
     closeBlock: '.category__btn',
     handleChange: value => {
-      console.log('value: ', value);
+      renderList(undefined, value);
     },
   });
 
   showPassword();
   choicesController();
+
+  avatarController({
+    inputFile: '.avatar__input',
+    uploadResult: '.avatar__result',
+  });
+
+  getCategory();
+  renderList();
+  searchControl();
 };
 
 init();

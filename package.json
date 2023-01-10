@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "choices.js": "^10.2.0",
+    "croppie": "^2.6.5",
     "normalize.css": "^8.0.1"
   }
 }

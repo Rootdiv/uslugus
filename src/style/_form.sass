@@ -66,6 +66,9 @@
     display: flex
     justify-content: space-between
 
+    @include tablet
+      flex-wrap: wrap
+
     @include mobile
       flex-direction: column
       gap: 32px
@@ -104,10 +107,8 @@
     @include mobile
       font-size: 14px
 
-    &_sign-up
+    &_sign-up, &_sign-in
       align-self: flex-end
-
-    &_sign-in
       margin-left: auto
 
     &:hover
