@@ -1,8 +1,21 @@
 .rating
+  display: flex
+  gap: 2px
   line-height: 0
+  color: #ffd600
+
+  &:hover &__star
+    color: #ffd600 !important
 
   &__star
-    fill: none
     cursor: pointer
-    &:hover
-      fill: #ffd600
+
+    &:hover ~ .rating__star
+      color: transparent !important
+
+  &[data-stars='1'] .rating__star:nth-child(1) ~ .rating__star,
+  &[data-stars='2'] .rating__star:nth-child(2) ~ .rating__star,
+  &[data-stars='3'] .rating__star:nth-child(3) ~ .rating__star,
+  &[data-stars='4'] .rating__star:nth-child(4) ~ .rating__star,
+  &[data-stars='5'] .rating__star:nth-child(5) ~ .rating__star
+    color: transparent
