@@ -1,6 +1,7 @@
 import { auth } from './auth';
 import { avatarController } from './avatarController';
 import { API_URL } from './const';
+import { errorPassword } from './errorPasswors';
 import { postData } from './postData';
 
 export const signInController = callback => {
@@ -14,8 +15,10 @@ export const signInController = callback => {
 
     const dataResponse = await postData(`${API_URL}/api/service/signin`, data);
 
-    if (dataResponse.errors) {
-      console.log(dataResponse.errors);
+    if (dataResponse.message) {
+      form.email.style.border = '1px solid #ff0000';
+      errorPassword(form, 'Неверный логин или пароль');
+      console.log(dataResponse.message);
       return;
     }
 
@@ -37,7 +40,7 @@ export const signUpController = callback => {
     event.preventDefault();
 
     if (form.password[0].value !== form.password[1].value) {
-      console.log('Пароли не совпадают');
+      errorPassword(form, 'Пароли не совпадают');
       return;
     }
 
@@ -51,7 +54,30 @@ export const signUpController = callback => {
     const dataResponse = await postData(`${API_URL}/api/service/signup`, data);
 
     if (dataResponse.errors) {
-      console.log(dataResponse.errors);
+      const errDiv = document.createElement('div');
+      errDiv.className = 'form__error-wrapper';
+      dataResponse.errors.forEach(error => {
+        const elemError = document.createElement('div');
+        elemError.className = 'form__error';
+        if (error.field !== 'password' && error.field !== 'category' && error.field !== 'avatar') {
+          form[error.field].style.border = '1px solid #ff0000';
+          elemError.textContent = error.message;
+        } else if (error.field === 'category') {
+          const catError = document.querySelector('.choices__inner');
+          catError.style.border = '1px solid #ff0000';
+          elemError.textContent = error.message;
+        } else if (error.field === 'password') {
+          errorPassword(form, error.message);
+        } else if (error.field === 'avatar') {
+          const avatarError = document.querySelector('.avatar__text');
+          avatarError.style.border = '2px solid #ff0000';
+          avatarError.style.borderRadius = '4px';
+          avatarError.style.padding = '5px';
+          elemError.textContent = error.message;
+        }
+        errDiv.append(elemError);
+      });
+      form.insertAdjacentElement('afterbegin', errDiv);
       return;
     }
 

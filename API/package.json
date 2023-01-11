@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index"
+    "start": "PORT=2606 node index"
   },
   "author": "",
   "license": "ISC"
