@@ -2,15 +2,6 @@ import { API_URL } from './const';
 import { store } from './store';
 import { categoryRus } from './categoryRus';
 
-export const auth = data => {
-  store.user.id = data.id;
-  store.user.name = data.name;
-  store.user.avatar = data.avatar;
-  store.user.category = data.category;
-
-  localStorage.setItem('uslugus', JSON.stringify(store.user));
-};
-
 export const createUserBlock = ({ id, avatar, name, category }) => {
   const headerAuth = document.querySelector('.header__auth');
   headerAuth.textContent = '';
@@ -58,4 +49,14 @@ export const createUserBlock = ({ id, avatar, name, category }) => {
     userBlock.classList.toggle('user_open');
     userWrapper.classList.toggle('user__wrapper_open');
   });
+};
+
+export const auth = data => {
+  store.user.id = data.id;
+  store.user.name = data.name;
+  store.user.avatar = data.avatar;
+  store.user.category = data.category;
+
+  createUserBlock(store.user);
+  localStorage.setItem('uslugus', JSON.stringify(store.user));
 };
