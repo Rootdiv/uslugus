@@ -12,6 +12,7 @@ import { ratingController } from './modules/ratingController';
 import { signInController, signUpController } from './modules/sign';
 import { getData } from './modules/getData';
 import { API_URL } from './modules/const';
+import { createUserBlock } from './modules/auth';
 
 const init = () => {
   const eventModalSignIn = modalController({
@@ -80,6 +81,13 @@ const init = () => {
 
   signUpController(eventModalSignUp.closeModal);
   signInController(eventModalSignIn.closeModal);
+
+  setTimeout(() => {
+    const userAuth = JSON.parse(localStorage.getItem('uslugus'));
+    if (userAuth) {
+      createUserBlock(userAuth);
+    }
+  }, 800);
 };
 
 init();

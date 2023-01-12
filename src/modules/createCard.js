@@ -1,11 +1,9 @@
 import { API_URL, directions } from './const';
-import { store } from './store';
-import { createStars } from './createStars';
+import { categoryRus } from './categoryRus';
 import { formatCurrency } from './formatCurrency';
+import { createStars } from './createStars';
 
 export const createCard = ({ avatar, category, comments, direction, id, name, surname, price }) => {
-  const categoryRus = store.categories.find(item => item.title === category).rus;
-
   const serviceItem = document.createElement('li');
   serviceItem.className = 'services__item';
 
@@ -17,14 +15,14 @@ export const createCard = ({ avatar, category, comments, direction, id, name, su
   const serviceAvatar = new Image(50, 50);
   serviceAvatar.className = 'service__avatar';
   serviceAvatar.src = `${API_URL}/${avatar}`;
-  serviceAvatar.alt = `${categoryRus} ${surname} ${name}`;
+  serviceAvatar.alt = `${categoryRus(category)} ${surname} ${name}`;
 
   const servicePresent = document.createElement('div');
   servicePresent.className = 'service__present';
 
   const serviceTitle = document.createElement('h3');
   serviceTitle.className = 'service__title';
-  serviceTitle.textContent = categoryRus;
+  serviceTitle.textContent = categoryRus(category);
 
   const serviceName = document.createElement('p');
   serviceName.className = 'service__name';
