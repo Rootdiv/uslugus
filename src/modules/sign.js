@@ -78,6 +78,10 @@ export const signUpController = callback => {
         errDiv.append(elemError);
       });
       form.insertAdjacentElement('afterbegin', errDiv);
+      form.insertAdjacentHTML(
+        'beforeend',
+        '<div class="form__error" style="margin: 15px 0 0 0;">Заполните все поля формы!</div>',
+      );
       return;
     }
 
