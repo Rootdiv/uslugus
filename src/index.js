@@ -13,6 +13,8 @@ import { signInController, signUpController } from './modules/sign';
 import { getData } from './modules/getData';
 import { API_URL } from './modules/const';
 import { createUserBlock } from './modules/auth';
+import { personCard } from './modules/personCard';
+import { reviewCard } from './modules/reviewCard';
 
 const init = () => {
   const eventModalSignIn = modalController({
@@ -35,13 +37,26 @@ const init = () => {
     btnClose: '.modal__close',
     handlerOpenModal: async ({ handler, modalElem }) => {
       const data = await getData(`${API_URL}/api/service/${handler.dataset.id}`);
-      console.log('data: ', data);
-      console.log('modalElem: ', modalElem);
+      const personService = modalElem.querySelector('.person__service');
+      personService.textContent = '';
+      personService.dataset.id = data.id;
+      personService.append(...personCard(data));
+      const aboutText = modalElem.querySelector('.about__text');
+      aboutText.textContent = data.about;
+
+      const review = document.querySelector('.review__list');
+      const reviews = data.comments.map(reviewCard);
+      if (data.comments.length) {
+        review.textContent = '';
+        review.append(...reviews);
+      } else {
+        review.textContent = 'Отзывов пока нет';
+      }
 
       const comments = document.querySelectorAll('.review__text');
       comments.forEach(comment => {
         //Проверяем срытую высоту комментария
-        if (comment.scrollHeight > 38 && !comment.nextElementSibling?.contains('review__open')) {
+        if (comment.scrollHeight > 38) {
           const button = document.createElement('button');
           button.classList.add('review__open');
           button.textContent = 'Развернуть';
@@ -53,8 +68,6 @@ const init = () => {
           });
         }
       });
-
-      console.log('data: ', data);
     },
   });
 
