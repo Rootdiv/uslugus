@@ -1,6 +1,13 @@
 @import '~choices.js/public/assets/styles/choices.min.css'
 
 .choices
+  border-radius: 8px !important
+
+  &:focus:not(.is-open)
+    outline-color: initial
+    outline-style: auto
+    outline-width: 1px
+
   &__inner
     font-size: 16px
     height: 46px
@@ -8,8 +15,12 @@
     align-items: center
     background-color: #ffffff
     border: none
-    border-radius: 8px
+    border-radius: 8px !important
     padding: 10px
+
+  &__item
+    &:hover, &:focus, &:focus-visible, &:focus-within, &:active
+      background-color: transparent
 
   &__list
     max-height: unset !important
@@ -17,8 +28,64 @@
     &--dropdown
       border: none !important
 
+      &[aria-expanded]
+        margin: -10px 0 !important
+        border-radius: 8px !important
+
     &--dropdown .choices__item--selectable
       padding-right: 10px !important
+
+  &__placeholder:not([aria-selected="true"])
+    display: none
+
+  &__placeholder, .choices__list--single > .choices__item
+    &::before
+      display: none
+
+  .form__select_category &__item:not(.choices__placeholder)
+    display: flex
+    align-items: center
+    gap: 12px
+
+    &::before
+      content: ''
+      display: block
+      width: 18px
+      height: 18px
+      background-size: 18px
+      background-repeat: no-repeat
+
+  &__item[data-value=photographer]
+    &::before
+      background-image: url('../img/photographer.svg')
+
+  &__item[data-value=makeup]
+    &::before
+      background-image: url('../img/makeup.svg')
+
+  &__item[data-value=masseur]
+    &::before
+      background-image: url('../img/masseur.svg')
+
+  &__item[data-value=handyman]
+    &::before
+      background-image: url('../img/handyman.svg')
+
+  &__item[data-value=cosmetologist]
+    &::before
+      background-image: url('../img/cosmetologist.svg')
+
+  &__item[data-value=electrician]
+    &::before
+      background-image: url('../img/electrician.svg')
+
+  &__item[data-value=manicurist]
+    &::before
+      background-image: url('../img/manicurist.svg')
+
+  &__item[data-value=plumber]
+    &::before
+      background-image: url('../img/plumber.svg')
 
   &[data-type*=select-one]::after
     width: 20px
@@ -31,3 +98,13 @@
 
   &[data-type*=select-one].is-open::after
     transform: rotate(180deg)
+
+  .form__select_price &__list
+    &--dropdown
+      &[aria-expanded]
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1)
+        border-radius: 12px !important
+
+  &.form__select_price.is-open.is-focused
+    border-radius: 12px !important
+    color: #c0c0c0
