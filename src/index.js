@@ -16,7 +16,10 @@ import { createUserBlock } from './modules/auth';
 import { personCard } from './modules/personCard';
 import { reviewCard } from './modules/reviewCard';
 
-const init = () => {
+const init = async () => {
+  await getCategory();
+  renderList();
+
   const eventModalSignIn = modalController({
     modal: '.modal_sign-in',
     btnOpen: '.header__auth-btn_sign-in',
@@ -44,13 +47,31 @@ const init = () => {
       const aboutText = modalElem.querySelector('.about__text');
       aboutText.textContent = data.about;
 
-      const review = document.querySelector('.review__list');
-      const reviews = data.comments.map(reviewCard);
+      const review = modalElem.querySelector('.person__review');
+      review.textContent = '';
+      const title = document.createElement('h3');
+      title.className = 'review__title';
+      title.textContent = 'Отзывы';
+      review.append(title);
+
       if (data.comments.length) {
-        review.textContent = '';
-        review.append(...reviews);
+        review.append(reviewCard(data.comments));
+
+        if (data.comments.length > 3) {
+          const btn = document.createElement('button');
+          btn.className = 'review__open review__open_list';
+          btn.textContent = 'Все отзывы';
+          review.append(btn);
+
+          btn.addEventListener('click', () => {
+            review.classList.add('review_show-all');
+            btn.remove();
+          });
+        }
       } else {
-        review.textContent = 'Отзывов пока нет';
+        const noReview = document.createElement('p');
+        noReview.textContent = 'Отзывов пока нет';
+        review.append(noReview);
       }
 
       const comments = document.querySelectorAll('.review__text');
@@ -87,20 +108,16 @@ const init = () => {
   showPassword();
   choicesController();
 
-  getCategory();
-  renderList();
   searchControl();
   ratingController();
 
   signUpController(eventModalSignUp.closeModal);
   signInController(eventModalSignIn.closeModal);
 
-  setTimeout(() => {
-    const userAuth = JSON.parse(localStorage.getItem('uslugus'));
-    if (userAuth) {
-      createUserBlock(userAuth);
-    }
-  }, 800);
+  const userAuth = JSON.parse(localStorage.getItem('uslugus'));
+  if (userAuth) {
+    createUserBlock(userAuth);
+  }
 };
 
 init();

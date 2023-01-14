@@ -47,7 +47,10 @@ export const personCard = ({ avatar, category, comments, direction, name, surnam
   serviceCountReview.className = 'service__count-review';
   serviceCountReview.textContent = comments.length;
 
-  serviceReview.append(createStars(comments), serviceCountReview);
+  const serviceStars = createStars(comments);
+  serviceStars.classList.add('service__stars');
+  serviceReview.append(serviceStars, serviceCountReview);
+
   const personService = [serviceAvatar, servicePresent, servicePrice, serviceContacts, serviceReview];
   return personService;
 };

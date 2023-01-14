@@ -1,40 +1,27 @@
-import starSVG from '../img/star.svg';
-import starEmptySVG from '../img/star-empty.svg';
+import { createStars } from './createStars';
 
-export const reviewCard = ({ name, stars, text }) => {
-  const reviewItem = document.createElement('li');
-  reviewItem.className = 'review__item';
+export const reviewCard = comments => {
+  const reviewList = document.createElement('ul');
+  reviewList.className = 'review__list';
 
-  const reviewName = document.createElement('p');
-  reviewName.className = 'review__name';
-  reviewName.textContent = name;
+  comments.forEach(({ name, stars, text }) => {
+    const reviewItem = document.createElement('li');
+    reviewItem.className = 'review__item';
 
-  const reviewStars = document.createElement('div');
-  reviewStars.className = 'review__stars stars';
+    const reviewName = document.createElement('p');
+    reviewName.className = 'review__name';
+    reviewName.textContent = name;
 
-  for (let i = 0; i < 5; i++) {
-    const star = document.createElement('img');
-    star.className = 'stars__item';
+    const reviewStars = createStars(stars);
+    reviewStars.classList.add('review__stars');
 
-    if (i === 0) {
-      star.alt = `Рейтинг специалиста ${stars} из 5`;
-    } else {
-      star.alt = '';
-    }
+    const reviewText = document.createElement('p');
+    reviewText.className = 'review__text';
+    reviewText.textContent = text;
 
-    if (stars > i) {
-      star.src = starSVG;
-    } else {
-      star.src = starEmptySVG;
-    }
+    reviewItem.append(reviewName, reviewStars, reviewText);
+    reviewList.append(reviewItem);
+  });
 
-    reviewStars.append(star);
-  }
-
-  const reviewText = document.createElement('p');
-  reviewText.className = 'review__text';
-  reviewText.textContent = text;
-
-  reviewItem.append(reviewName, reviewStars, reviewText);
-  return reviewItem;
+  return reviewList;
 };
