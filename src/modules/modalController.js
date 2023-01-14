@@ -1,3 +1,5 @@
+import { clearFormError } from './clearFormError';
+
 export const modalController = ({
   modal,
   btnOpen,
@@ -47,10 +49,11 @@ export const modalController = ({
       }
     },
     openModal: async handler => {
-      await dataModal.handlerOpenModal({ handler, modalElem });
+      await dataModal.handlerOpenModal({ handler, modalElem, closeModal: dataModal.closeModal });
       modalElem.style.visibility = 'visible';
       modalElem.style.opacity = 1;
       window.addEventListener('keydown', dataModal.closeModal);
+      clearFormError(modalElem.querySelector('form'));
     },
   };
 

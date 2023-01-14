@@ -18,7 +18,6 @@ export const signInController = callback => {
     if (dataResponse.message) {
       form.email.style.border = '1px solid #ff0000';
       errorPassword(form, 'Неверный логин или пароль');
-      console.log(dataResponse.message);
       return;
     }
 
@@ -55,7 +54,8 @@ export const signUpController = callback => {
 
     if (dataResponse.errors) {
       const errDiv = document.createElement('div');
-      errDiv.className = 'form__error-wrapper';
+      errDiv.className = 'form__error';
+      errDiv.style.margin = '15px 0 0 0';
       dataResponse.errors.forEach(error => {
         const elemError = document.createElement('div');
         elemError.className = 'form__error';
@@ -77,11 +77,8 @@ export const signUpController = callback => {
         }
         errDiv.append(elemError);
       });
-      form.insertAdjacentElement('afterbegin', errDiv);
-      form.insertAdjacentHTML(
-        'beforeend',
-        '<div class="form__error" style="margin: 15px 0 0 0;">Заполните все поля формы!</div>',
-      );
+      errDiv.textContent = 'Заполните все поля формы!';
+      form.insertAdjacentElement('beforeend', errDiv);
       return;
     }
 
