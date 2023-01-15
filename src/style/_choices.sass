@@ -18,9 +18,8 @@
     border-radius: 8px !important
     padding: 10px
 
-  &__item
-    &:hover, &:focus, &:focus-visible, &:focus-within, &:active
-      background-color: transparent
+  &__placeholder:not([aria-selected="true"])
+    display: none
 
   &__list
     max-height: unset !important
@@ -35,25 +34,18 @@
     &--dropdown .choices__item--selectable
       padding-right: 10px !important
 
-  &__placeholder:not([aria-selected="true"])
-    display: none
+    &--dropdown .choices__item:not(.choices__placeholder)
+      display: flex
+      align-items: center
+      gap: 12px
 
-  &__placeholder, .choices__list--single > .choices__item
-    &::before
-      display: none
-
-  .form__select_category &__item:not(.choices__placeholder)
-    display: flex
-    align-items: center
-    gap: 12px
-
-    &::before
-      content: ''
-      display: block
-      width: 18px
-      height: 18px
-      background-size: 18px
-      background-repeat: no-repeat
+      &::before
+        content: ''
+        display: block
+        width: 18px
+        height: 18px
+        background-size: 18px
+        background-repeat: no-repeat
 
   &__item[data-value=photographer]
     &::before

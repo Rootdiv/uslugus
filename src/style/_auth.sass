@@ -1,4 +1,4 @@
-.user
+.auth
   display: flex
   gap: 4px
 
@@ -44,8 +44,7 @@
   &__name
     font-weight: 400
 
-  &__edit
-    padding-top: 4px
+  &__btn-edit
     position: relative
     white-space: nowrap
     align-self: flex-start
@@ -53,7 +52,7 @@
 
     &::after
       transition: background-color 0.2s ease-in-out
-    @include bottomLine(0px, -1px)
+    @include bottomLine(0px, -1.5px)
 
     &:hover
       color: #e5c207

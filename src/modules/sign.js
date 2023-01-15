@@ -1,7 +1,8 @@
 import { auth } from './auth';
 import { avatarController } from './avatarController';
 import { API_URL } from './const';
-import { errorPassword } from './errorPasswors';
+import { createCard } from './createCard';
+import { errorPassword } from './errorPasswords';
 import { postData } from './postData';
 
 export const signInController = callback => {
@@ -29,6 +30,7 @@ export const signInController = callback => {
 
 export const signUpController = callback => {
   const form = document.querySelector('.form_sign-up');
+  form.action = `${API_URL}/api/service/signup`;
 
   const crp = avatarController({
     inputFile: '.avatar__input',
@@ -50,7 +52,11 @@ export const signUpController = callback => {
       size: 'viewport',
     });
 
-    const dataResponse = await postData(`${API_URL}/api/service/signup`, data);
+    if (!data.avatar.includes('base64')) {
+      delete data.avatar;
+    }
+
+    const dataResponse = await postData(form.action, data, form.dataset.method);
 
     if (dataResponse.errors) {
       const errDiv = document.createElement('div');
@@ -80,6 +86,17 @@ export const signUpController = callback => {
       errDiv.textContent = 'Заполните все поля формы!';
       form.insertAdjacentElement('beforeend', errDiv);
       return;
+    } else if (dataResponse.message) {
+      errorPassword(form, dataResponse.message);
+      return;
+    }
+
+    if (form.dataset.method !== 'PATCH') {
+      const servicesList = document.querySelector('.services__list');
+      servicesList.append(createCard(dataResponse));
+    } else {
+      const replaced = document.querySelector(`.service[data-id="${dataResponse.id}"]`);
+      replaced.parentElement.replaceWith(createCard(dataResponse));
     }
 
     auth(dataResponse);
