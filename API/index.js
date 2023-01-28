@@ -291,7 +291,7 @@ function addComment(itemId, comment) {
   return data.services[itemIndex];
 }
 
-module.exports = createServer(options, async (req, res) => {
+createServer(options, async (req, res) => {
   if (req.url.substring(1, 4) === 'img') {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'image/jpeg');
