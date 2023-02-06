@@ -96,7 +96,10 @@ export const signUpController = callback => {
       servicesList.append(createCard(dataResponse));
     } else {
       const replaced = document.querySelector(`.service[data-id="${dataResponse.id}"]`);
-      replaced.parentElement.replaceWith(createCard(dataResponse));
+      if (replaced) {
+        replaced.parentElement.replaceWith(createCard(dataResponse));
+      }
+      auth(dataResponse);
     }
 
     auth(dataResponse);

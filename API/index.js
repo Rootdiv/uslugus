@@ -162,11 +162,8 @@ function makeItemsFromData(data, id) {
 }
 
 function getItemsList(params = {}) {
-  // eslint-disable-next-line no-unused-vars
   const page = +params.page || 1;
-  // eslint-disable-next-line no-unused-vars
   const paginationCount = params.count || 8;
-  // eslint-disable-next-line no-unused-vars
   const sort = {
     value: params.sort,
     direction: params.direction || 'up',
@@ -188,8 +185,7 @@ function getItemsList(params = {}) {
   if (params.getpassword) return db;
   db.services.forEach(service => delete service.password);
   if (params.nopage) return db;
-  // return pagination(db, page, paginationCount, sort); // пагинация
-  return db.services;
+  return pagination(db, page, paginationCount, sort);
 }
 
 function createItems(data) {

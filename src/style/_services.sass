@@ -5,10 +5,12 @@
     padding-top: 5px
 
   &__container
-    display: flex
+    display: grid
+    grid-template-columns: 180px 1fr
     gap: 30px 20px
 
     @include tablet
+      display: flex
       flex-direction: column
 
   &__list
@@ -22,3 +24,6 @@
 
     &:not(:last-child)
       margin-bottom: 10px
+
+  &__pagination
+    grid-column: 2 span
