@@ -108,6 +108,11 @@ module.exports = {
         type: 'asset/resource',
       },
       {
+        test: /\.webmanifest$/i,
+        use: 'webpack-webmanifest-loader',
+        type: 'asset/resource',
+      },
+      {
         test: /\.m?js$/i,
         exclude: /(node_modules|bower_components)/,
         use: {
