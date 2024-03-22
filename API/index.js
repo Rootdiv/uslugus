@@ -1,15 +1,7 @@
 // импорт стандартных библиотек Node.js
 const { existsSync, mkdirSync, readFileSync, writeFileSync, writeFile, unlink } = require('fs');
-const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
-const { createServer } = require(protocol);
+const { createServer } = require('http');
 const path = require('path');
-
-const options = {};
-if (protocol === 'https') {
-  const certDir = '/etc/nginx/acme.sh';
-  options['key'] = readFileSync(`${certDir}/rootdiv.ru/privkey.pem`);
-  options['cert'] = readFileSync(`${certDir}/rootdiv.ru/fullchain.pem`);
-}
 
 const DB_FILE = process.env.DB_FILE || path.resolve(__dirname, 'db.json');
 const PORT = process.env.PORT || 3024;
@@ -56,7 +48,6 @@ function dataURLtoFile(base64, id) {
   return `img/${id}.${ext}`;
 }
 
-// eslint-disable-next-line no-unused-vars
 const pagination = (db, page, count) => {
   const end = count * page;
   const start = page === 1 ? 0 : end - count;
@@ -173,7 +164,9 @@ function getItemsList(params = {}) {
 
   if (params.search) {
     const search = params.search.trim().toLowerCase();
-    data = data.filter(item => item.name.toLowerCase().includes(search) || item.about.toLowerCase().includes(search));
+    data = data.filter(
+      item => item.name.toLowerCase().includes(search) || item.about.toLowerCase().includes(search),
+    );
   }
 
   if (params.category) {
@@ -211,7 +204,9 @@ function getItems(itemId) {
 
 function findItems(reqData) {
   const data = JSON.parse(readFileSync(DB_FILE) || '[]');
-  const item = data.services.find(({ email }) => reqData.email.toLowerCase() === email.toLowerCase());
+  const item = data.services.find(
+    ({ email }) => reqData.email.toLowerCase() === email.toLowerCase(),
+  );
   if (!item) throw new ApiError(404, { message: 'Item Not Found' });
   if (item.password !== reqData.password) throw new ApiError(404, { message: 'Wrong password' });
   delete item.password;
@@ -222,10 +217,16 @@ function updateItems(itemId, newService) {
   const data = getItemsList({ getpassword: true });
   const itemIndex = data.services.findIndex(({ id }) => id === itemId);
   if (itemIndex === -1) throw new ApiError(404, { message: 'Items Not Found' });
-  if (!newService.password) throw new ApiError(404, { field: 'password', message: 'Не указан пароль' });
-  if (newService.password !== data.services[itemIndex].password)
+  if (!newService.password) {
+    throw new ApiError(404, { field: 'password', message: 'Не указан пароль' });
+  }
+  if (newService.password !== data.services[itemIndex].password) {
     throw new ApiError(404, { field: 'password', message: 'Пароль не верный' });
-  Object.assign(data.services[itemIndex], makeItemsFromData({ ...data.services[itemIndex], ...newService }, itemId));
+  }
+  Object.assign(
+    data.services[itemIndex],
+    makeItemsFromData({ ...data.services[itemIndex], ...newService }, itemId),
+  );
   writeFileSync(DB_FILE, JSON.stringify(data), { encoding: 'utf8' });
   delete data.services[itemIndex].password;
   return data.services[itemIndex];
@@ -280,14 +281,17 @@ function addComment(itemId, comment) {
   const itemIndex = data.services.findIndex(({ id }) => id === itemId);
   if (itemIndex === -1) throw new ApiError(404, { message: 'Items Not Found' });
   data.services[itemIndex].comments.push(comment);
-  Object.assign(data.services[itemIndex], makeItemsFromData({ ...data.services[itemIndex] }, itemId));
+  Object.assign(
+    data.services[itemIndex],
+    makeItemsFromData({ ...data.services[itemIndex] }, itemId),
+  );
   writeFileSync(DB_FILE, JSON.stringify(data), { encoding: 'utf8' });
 
   delete data.services[itemIndex].password;
   return data.services[itemIndex];
 }
 
-createServer(options, async (req, res) => {
+createServer(async (req, res) => {
   if (req.url.substring(1, 4) === 'img') {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'image/jpeg');
@@ -376,19 +380,25 @@ createServer(options, async (req, res) => {
   }
 })
   .on('listening', () => {
-    if (protocol === 'http') {
-      console.log(`Сервер CRM запущен. Вы можете использовать его по адресу http://localhost:${PORT}`);
+    if (process.env.PROD !== 'true') {
+      console.log(
+        `Сервер CRM запущен. Вы можете использовать его по адресу http://localhost:${PORT}`,
+      );
       console.log('Нажмите CTRL+C, чтобы остановить сервер');
       console.log('Доступные методы:');
       console.log(`GET /api/category - получить список категорий`);
       console.log(`GET ${URI_PREFIX} - получить список услуг`);
       console.log(`GET ${URI_PREFIX}?{search=""} - поиск услуги по имени и описанию`);
-      console.log(`POST ${URI_PREFIX}/signup - Зарегистрировать специалиста, в теле запроса нужно передать объект`);
+      console.log(
+        `POST ${URI_PREFIX}/signup - Зарегистрировать специалиста, в теле запроса нужно передать объект`,
+      );
       console.log(`POST ${URI_PREFIX}/signin - Псевдоавторизация, отправьте email и пароль`);
       console.log(`GET ${URI_PREFIX}/{id} - получить услуги по его ID`);
-      console.log(`PATCH ${URI_PREFIX}/{id} - изменить услугу с ID, в теле запроса нужно передать объект`);
+      console.log(
+        `PATCH ${URI_PREFIX}/{id} - изменить услугу с ID, в теле запроса нужно передать объект`,
+      );
       console.log(`DELETE ${URI_PREFIX}/{id} - удалить услугу по ID`);
       console.log(`POST ${URI_PREFIX}/comment/{id} - добавить комментарий`);
     }
   })
-  .listen(PORT);
+  .listen(PORT, 'localhost');
